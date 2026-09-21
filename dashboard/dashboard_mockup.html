@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ChipUP Digital Twin — Doctor Dashboard (Conceptual Mockup)</title>
+<style>
+  :root {
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --primary: #2563eb;
+    --danger: #dc2626;
+    --warning: #d97706;
+    --safe: #16a34a;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  header {
+    background: var(--primary);
+    color: white;
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header h1 { font-size: 18px; margin: 0; font-weight: 600; }
+  header span { font-size: 13px; opacity: 0.85; }
+  .container {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .card h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin: 0 0 14px 0;
+  }
+  .patient-header {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .patient-name { font-size: 22px; font-weight: 700; }
+  .patient-meta { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .risk-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .risk-high { background: #fef2f2; color: var(--danger); border: 1px solid #fecaca; }
+  .risk-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--danger); }
+  .metric-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-label { color: var(--muted); }
+  .metric-value { font-weight: 600; }
+  .glucose-chart {
+    height: 140px;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    margin-top: 10px;
+  }
+  .bar { flex: 1; background: var(--primary); border-radius: 2px 2px 0 0; opacity: 0.85; }
+  .bar.spike { background: var(--danger); }
+  .alert-box {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #92400e;
+    margin-top: 14px;
+  }
+  .twin-summary {
+    grid-column: 1 / -1;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+  }
+  .twin-summary p { font-size: 13px; line-height: 1.6; margin: 0; color: #1e3a8a; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ChipUP Digital Twin &mdash; Type 2 Diabetes Monitor</h1>
+  <span>Conceptual UI Mockup &middot; Not for clinical use</span>
+</header>
+
+<div class="container">
+
+  <div class="card patient-header">
+    <div>
+      <div class="patient-name">Patient P0042 &middot; Digital Twin Active</div>
+      <div class="patient-meta">Age 58 &middot; Male &middot; T2D (9 yrs) &middot; HbA1c 8.4% &middot; On Metformin</div>
+    </div>
+    <div class="risk-badge risk-high">
+      <span class="risk-dot"></span>
+      High Risk &middot; Spike likely in ~2h
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Glucose Trend (Last 6 Hours)</h2>
+    <div class="glucose-chart">
+      <div class="bar" style="height:40%"></div>
+      <div class="bar" style="height:42%"></div>
+      <div class="bar" style="height:45%"></div>
+      <div class="bar" style="height:44%"></div>
+      <div class="bar" style="height:48%"></div>
+      <div class="bar" style="height:52%"></div>
+      <div class="bar" style="height:55%"></div>
+      <div class="bar" style="height:58%"></div>
+      <div class="bar" style="height:62%"></div>
+      <div class="bar" style="height:65%"></div>
+      <div class="bar" style="height:70%"></div>
+      <div class="bar spike" style="height:78%"></div>
+      <div class="bar spike" style="height:88%"></div>
+      <div class="bar spike" style="height:95%"></div>
+    </div>
+    <div class="alert-box">
+      ⚠ Model predicts a glucose spike within the next 2 hours (confidence: 0.81).
+      Rising trend + declining HRV detected post-lunch window.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Live Twin Signals</h2>
+    <div class="metric-row"><span class="metric-label">Current Glucose</span><span class="metric-value">168 mg/dL</span></div>
+    <div class="metric-row"><span class="metric-label">Heart Rate</span><span class="metric-value">88 bpm</span></div>
+    <div class="metric-row"><span class="metric-label">HRV</span><span class="metric-value">34 ms (↓ from 45 ms baseline)</span></div>
+    <div class="metric-row"><span class="metric-label">Sleep Last Night</span><span class="metric-value">5.2 hrs (fragmented)</span></div>
+    <div class="metric-row"><span class="metric-label">Steps Today</span><span class="metric-value">2,140</span></div>
+    <div class="metric-row"><span class="metric-label">Model Confidence</span><span class="metric-value">81%</span></div>
+  </div>
+
+  <div class="card twin-summary">
+    <h2 style="color:#1e3a8a;">Digital Twin Reasoning (Explainability)</h2>
+    <p>
+      This prediction is driven primarily by: (1) a sustained upward glucose slope over the
+      last 2 hours, (2) reduced heart-rate variability suggesting physiological stress, and
+      (3) this patient's elevated HbA1c (8.4%) and 9-year diabetes history, which historically
+      correlate with higher spike frequency. Recommended action: consider pre-emptive
+      dietary/insulin guidance before the predicted window.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  ChipUP &middot; Digital Twin Challenge 2026 &middot; Chennai Institute of Technology &middot; All data synthetic
+</footer>
+
+</body>
+</html>
