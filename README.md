@@ -10,7 +10,7 @@
 | College / Incubator | Chennai Institute of Technology |
 | Team Leader | Reshmi K |
 | Team Members | Reshmi K, Rosiny C A, Varsha S, Yokhithaa S |
-| Degree | B.E. Engineering Students |
+| Degree | B.E. Engineering Students (Electronics)|
 
 ## Project Title
 
