@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 .DS_Store
 *.ipynb_checkpoints
+model/fused_dataset.csv
+data/synthetic_wearable.csv
